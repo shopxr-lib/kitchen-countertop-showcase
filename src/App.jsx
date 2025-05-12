@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Canvas } from "@react-three/fiber";
+import { useConfig } from "./context/ConfigContext";
+import CameraSetup from "./components/CameraSetup";
+import { Suspense } from "react";
+import Scene3D from "./components/Scene3D";
+import ControlButtons from "./components/ControlButtons";
+import CustomizationDrawer from "./components/CustomizationDrawer";
+import Branding from "./components/Branding";
+import ShoppingCartDrawer from "./components/ShoppingCartDrawer";
+import { Environment, OrbitControls } from "@react-three/drei";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  //* Apply canvas adjustments for desktop/tablet when customization drawer is open
+  const { customizeOpen } = useConfig();
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="h-screen w-full bg-gray-100 overflow-hidden">
+      <div
+        className={`h-full transition-all duration-300 ${
+          customizeOpen ? "ml-64 md:ml-64" : "ml-0"
+        }`}
+      >
+        <Canvas shadows>
+          <CameraSetup />
+          <Suspense fallback={null}>
+            <Scene3D />
+            <Environment preset="apartment" />
+          </Suspense>
+          <OrbitControls enablePan={false} minDistance={1} maxDistance={5} />
+        </Canvas>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <ControlButtons />
+      <CustomizationDrawer />
+      <ShoppingCartDrawer />
+      <Branding />
+    </div>
+  );
 }
 
-export default App
+export default App;
