@@ -13,6 +13,7 @@ const Scene3D = () => {
       <CountertopModel size={counterSize} material={material} />
       <BasinModel size={counterSize} type={basinType} />
       <TapModel size={counterSize} type={tapType} />
+      {showDimensions && <DimensionLines size={counterSize} />}
 
       {/* Lighting */}
       <ambientLight intensity={0.5} />

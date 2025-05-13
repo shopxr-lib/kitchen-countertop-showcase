@@ -13,9 +13,14 @@ const BasinModel = ({ type, size }) => {
   const lengthValue = parseInt(size.length.replace("m", ""));
   const widthValue = parseFloat(size.width.replace("m", ""));
 
-  const position = [0, 0.04, 0];
-  const rotation = [0, Math.PI / 2, 0];
-  return <primitive object={scene} position={position} rotation={rotation} />;
+  let position;
+  if (widthValue === 1.2) {
+    position = [0, 0.04, 0.25];
+  } else {
+    position = [0, 0.04, 0];
+  }
+
+  return <primitive object={scene} position={position} />;
 };
 
 export default BasinModel;

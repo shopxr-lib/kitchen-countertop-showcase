@@ -7,8 +7,8 @@ const CameraSetup = () => {
     <PerspectiveCamera
       ref={cameraRef}
       makeDefault
-      position={[-2, 1, 0]}
-      fov={30}
+      position={[0, 1, 3]}
+      fov={25}
     />
   );
 };

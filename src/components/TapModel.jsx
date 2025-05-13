@@ -8,12 +8,17 @@ const TapModel = ({ type, size }) => {
 
   const { scene } = useGLTF(modelPath);
 
-  //* Position the tap on top of the countertop
-  //* Adjust position based on countertop size
-  const position = [0.05, 0.09, 0.01]; // Slightly towards the back of the sink
-  const rotation = [0, -Math.PI / 2, 0];
+  const widthValue = parseFloat(size.width.replace("m", ""));
 
-  return <primitive object={scene} position={position} rotation={rotation} />;
+  //* Position the tap on top of the countertop
+  let position;
+  if (widthValue === 1.2) {
+    position = [0, 0.04, 0.08];
+  } else {
+    position = [0, 0.04, -0.16];
+  }
+
+  return <primitive object={scene} position={position} />;
 };
 
 export default TapModel;
