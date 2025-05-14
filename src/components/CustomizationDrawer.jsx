@@ -31,25 +31,33 @@ const CustomizationDrawer = () => {
   //* Basin options
   const basinOptions = [
     {
+      name: "None",
+      price: 0,
+    },
+    {
       name: "Basin 1",
-      price: prices.basin,
+      price: 300,
     },
     {
       name: "Basin 2",
-      price: prices.basin,
+      price: 300,
     },
   ];
 
   //* Tap options
   const tapOptions = [
     {
+      name: "None",
+      price: 0,
+    },
+    {
       name: "Tap 1",
-      price: prices.tap,
+      price: 250,
       image: "/assets/icons/tap-chrome-8102-large.webp",
     },
     {
       name: "Tap 2",
-      price: prices.tap,
+      price: 250,
       image: "/assets/icons/tap-chrome-8302-large.webp",
     },
   ];

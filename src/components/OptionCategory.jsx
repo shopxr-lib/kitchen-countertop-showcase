@@ -46,7 +46,9 @@ const OptionCategory = ({ title, value, options, onSelect }) => {
                 <span>{option.name}</span>
               </div>
               {title === "Length" || title === "Width" ? null : (
-                <span className="text-gray-500 text-sm">${option.price}</span>
+                <span className="text-gray-500 text-sm">
+                  ${option.name === "None" ? 0 : option.price}
+                </span>
               )}
             </div>
           ))}

@@ -11,8 +11,10 @@ const Scene3D = () => {
   return (
     <group>
       <CountertopModel size={counterSize} material={material} />
-      <BasinModel size={counterSize} type={basinType} />
-      <TapModel size={counterSize} type={tapType} />
+      {basinType !== "None" && (
+        <BasinModel size={counterSize} type={basinType} />
+      )}
+      {tapType !== "None" && <TapModel size={counterSize} type={tapType} />}
       {showDimensions && <DimensionLines size={counterSize} />}
 
       {/* Lighting */}

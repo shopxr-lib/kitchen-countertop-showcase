@@ -8,8 +8,8 @@ export const ConfigProvider = ({ children }) => {
     length: "1m",
     width: "0.6m",
   });
-  const [basinType, setBasinType] = useState("Basin 1");
-  const [tapType, setTapType] = useState("Tap 1");
+  const [basinType, setBasinType] = useState("None");
+  const [tapType, setTapType] = useState("None");
   const [material, setMaterial] = useState("S034 - White");
   const [showDimensions, setShowDimensions] = useState(false);
   const [customizeOpen, setCustomizeOpen] = useState(false);
@@ -22,8 +22,8 @@ export const ConfigProvider = ({ children }) => {
   //* Calculate prices based on the configuration
   const calculatePrice = () => {
     //* Base prices for components
-    const basinPrice = 300;
-    const tapPrice = 250;
+    const basinPrice = basinType === "None" ? 0 : 300;
+    const tapPrice = tapType === "None" ? 0 : 250;
 
     //* Calculate countertop material price based on size and material
     let materialPrice = 0;
