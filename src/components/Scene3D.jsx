@@ -18,8 +18,13 @@ const Scene3D = () => {
       {showDimensions && <DimensionLines size={counterSize} />}
 
       {/* Lighting */}
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+      <ambientLight color="#ffffff" intensity={0.5} />
+      <directionalLight
+        color="#ffffff"
+        position={[5, 5, 5]}
+        intensity={1}
+        castShadow
+      />
       <spotLight position={[-5, 5, 2]} intensity={0.8} castShadow />
     </group>
   );

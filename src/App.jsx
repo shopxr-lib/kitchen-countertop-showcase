@@ -30,7 +30,7 @@ function App() {
           <CameraSetup />
           <Suspense fallback={null}>
             <Scene3D />
-            <Environment preset="apartment" />
+            <Environment preset="sunset" />
           </Suspense>
           <OrbitControls enablePan={false} minDistance={1} maxDistance={5} />
         </Canvas>
